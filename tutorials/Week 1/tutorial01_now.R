@@ -70,7 +70,24 @@ names(data) <- #hint: try using the function sub() with the regexp " \\[.*"
 #    Try using ggplot to create a plot of scatter showing GDP p/c vs Tax revenue. Add a
 #    simple linear regression line.
   
-  
+library(dplyr)
+library(ggplot2)
+
+p <- data %>%
+  ggplot(aes(
+    `Tax revenue (% of GDP)`,
+    `GDP per capita (current US$)`
+  )) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+print(p)
+
+sum(
+  !is.na(data$`Tax revenue (% of GDP)`) &
+    !is.na(data$`GDP per capita (current US$)`)
+)
+
   
 # 2. Now let's try the same using GDP p/c vs Ease of Doing Business.
 
