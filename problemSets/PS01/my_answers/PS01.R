@@ -35,13 +35,39 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 #####################
 # Problem 1
 #####################
-
+rm(data)
 set.seed(123)
+data <- rcauchy(1000, location = 0, scale = 1)
+# This ensures data refers to numeric vector and not a function. 
 # create empirical distribution of observed data
+ks_normal_test <- function(data) {
+  n <- length(data)
 ECDF <- ecdf(data)
 empiricalCDF <- ECDF(data)
 # generate test statistic
 D <- max(abs(empiricalCDF - pnorm(data)))
+k <- 1:100
+p_value <- 2 * sum((-1)^(k - 1) * exp(-2 * k^2 * n * D^2))
+
+# ensure p-value is in [0, 1]
+p_value <- max(min(p_value, 1), 0)
+
+return(list(
+  D = D,
+  p.value = p_value
+))
+}
+set.seed(123)
+data <- rcauchy(1000, location = 0, scale = 1)
+
+# perform KS test
+result <- ks_normal_test(data)
+
+result
+# The value of 0.134 is fairly large and indicates that data does not 
+# follow a normal distribution. The p value is below the significance level 
+# and indicates that we can reject the null hypothesis that this data 
+# comes from a normal distribution. 
 
 #####################
 # Problem 2
