@@ -101,9 +101,33 @@ $$p(D \leq d)= \frac{\sqrt {2\pi}}{d} \sum _{k=1}^{\infty }e^{-(2k-1)^{2}\pi ^{2
 
 \vspace{3in}
 
+\lstinputlisting[language=R, firstline=38, lastline=57]{PS01.R} 
+
+\begin{itemize}
+	\item $D = 0.1347281$
+	\item $\text{p.value} = 3.425363 \times 10^{-16}$
+\end{itemize}
+
+	\textit {The code first ensures that data refers to a numeric vector rather than a function, then creates the empirical cumulative distribution function ECDF for the observed data. A custom function, ks normal test, is defined to perform a Kolmogorov–Smirnov  test against a normal distribution. Within this function, the KS statistic D is calculated as the maximum absolute difference between the empirical CDF and the theoretical normal CDF, and the corresponding p-value is approximated using the Kolmogorov distribution. The test is then applied to 1,000 randomly generated Cauchy values. The resulting large D and small p-value indicate a substantial deviation from normality, leading to rejection of the null hypothesis that the data are normally distributed.}
+
 \section*{Question 2}
 \noindent Estimate an OLS regression in \texttt{R} that uses the Newton-Raphson algorithm (specifically \texttt{BFGS}, which is a quasi-Newton method), and show that you get the equivalent results to using \texttt{lm}. Use the code below to create your data.
 \vspace{.5cm}
-\lstinputlisting[language=R, firstline=51,lastline=53]{PS01.R} 
 
-\end{document}
+
+\lstinputlisting[language=R, firstline=63,lastline=86]{PS01.R} 
+
+\textit {In Problem 2, a dataset with a linear relationship between a predictor x and a response y is generated, and the regression coefficient is estimated using both the standard lm() function and through BFGS. The BFGS method minimizes the sum of squared residuals to reproduce the ordinary least squares estimate. Comparing the results shows that both methods produce virtually identical coefficients (2.74764) and fitted values.}
+
+\begin{itemize}
+	\item BFGS estimate: $2.74764$
+	\item Comparison of coefficients:
+	\[
+	\begin{array}{ll}
+		\text{lm\_estimate} & \text{bfgs\_estimate} \\
+		2.74764 & 2.74764
+	\end{array}
+	\]
+	\item Maximum difference in fitted values: $2.544591 \times 10^{-8}$
+\end{itemize}
+
