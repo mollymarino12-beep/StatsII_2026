@@ -40,23 +40,21 @@ set.seed(123)
 data <- rcauchy(1000, location = 0, scale = 1)
 # This ensures data refers to numeric vector and not a function. 
 # create empirical distribution of observed data
+#Defines a function that performs a KS test against a normal distribution
 ks_normal_test <- function(data) {
-  n <- length(data)
-ECDF <- ecdf(data)
-empiricalCDF <- ECDF(data)
-# generate test statistic
-D <- max(abs(empiricalCDF - pnorm(data)))
+  n <- length(data) #Needed for scaling the KS statistic and p-value
+ECDF <- ecdf(data) # constructs the empirical distribution function 
+empiricalCDF <- ECDF(data) # Evaluates at each point 
+D <- max(abs(empiricalCDF - pnorm(data))) # computes the theoretical norm CDF
 k <- 1:100
-p_value <- 2 * sum((-1)^(k - 1) * exp(-2 * k^2 * n * D^2))
-
+p_value <- 2 * sum((-1)^(k - 1) * exp(-2 * k^2 * n * D^2)) # This approximates the Kolmogorov Distribution 
 # ensure p-value is in [0, 1]
 p_value <- max(min(p_value, 1), 0)
-
 return(list(
   D = D,
   p.value = p_value
 ))
-}
+} # This produces the p value and KS Stat
 set.seed(123)
 data <- rcauchy(1000, location = 0, scale = 1)
 
@@ -76,3 +74,25 @@ result
 set.seed (123)
 data <- data.frame(x = runif(200, 1, 10))
 data$y <- 0 + 2.75*data$x + rnorm(200, 0, 1.5)
+lm_fit <- lm(y ~ x - 1, data = data) # Get OLS benchmark 
+coef(lm_fit)
+ols_objective <- function(beta, y, x) { # Converts regression into optimization problem 
+  sum((y - beta * x)^2)
+}
+bfgs_fit <- optim(
+  par = 0,                    # initial guess using BFGS
+  fn = ols_objective,
+  y = data$y,
+  x = data$x,
+  method = "BFGS"
+)
+
+bfgs_fit$par
+c(
+  lm_estimate   = coef(lm_fit),
+  bfgs_estimate = bfgs_fit$par # Compare estimates 
+)
+max(abs(
+  fitted(lm_fit) - data$x * bfgs_fit$par # Compares fitted values 
+))
+
