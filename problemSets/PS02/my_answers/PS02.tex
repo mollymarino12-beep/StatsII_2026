@@ -64,69 +64,102 @@
 \date{Due: February 18, 2026}
 \author{Applied Stats II}
 
-
 \begin{document}
 	\maketitle
+	
 	\section*{Instructions}
 	\begin{itemize}
-		\item Please show your work! You may lose points by simply writing in the answer. If the problem requires you to execute commands in \texttt{R}, please include the code you used to get your answers. Please also include the \texttt{.R} file that contains your code. If you are not sure if work needs to be shown for a particular problem, please ask.
-		\item Your homework should be submitted electronically on GitHub in \texttt{.pdf} form.
-		\item This problem set is due before 23:59 on Wednesday February 18, 2026. No late assignments will be accepted.
-
+		\item Please show your work! Include the \texttt{R} code used for calculations.
+		\item Submit your homework in \texttt{.pdf} form on GitHub.
+		\item The assignment is due before 23:59 on Wednesday, February 18, 2026. Late submissions will not be accepted.
 	\end{itemize}
-
-	\vspace{.25cm}
-
-\noindent We're interested in what types of international environmental agreements or policies people support (\href{https://www.pnas.org/content/110/34/13763}{Bechtel and Scheve 2013)}. So, we asked 8,500 individuals whether they support a given policy, and for each participant, we vary the (1) number of countries that participate in the international agreement and (2) sanctions for not following the agreement. \\
-
-\noindent Load in the data labeled \texttt{climateSupport.RData} on GitHub, which contains an observational study of 8,500 observations.
-
-\begin{itemize}
-	\item
-	Response variable: 
+	
+	\noindent We are interested in what types of international environmental agreements people support (\href{https://www.pnas.org/content/110/34/13763}{Bechtel and Scheve 2013}). The dataset \texttt{climateSupport.RData} contains 8,500 observations on whether individuals support a policy, varying (1) the number of countries participating and (2) sanctions for non-compliance.  
+	
 	\begin{itemize}
-		\item \texttt{choice}: 1 if the individual agreed with the policy; 0 if the individual did not support the policy
+		\item Response variable: 
+		\begin{itemize}
+			\item \texttt{choice}: 1 if the individual agreed with the policy; 0 if not.
+		\end{itemize}
+		\item Explanatory variables:
+		\begin{itemize}
+			\item \texttt{countries}: Number of participating countries [20, 80, 160 of 192].
+			\item \texttt{sanctions}: Sanctions for missing emission reduction targets [None, 5\%, 15\%, 20\%].
+		\end{itemize}
 	\end{itemize}
-	\item
-	Explanatory variables: 
-	\begin{itemize}
-		\item
-		\texttt{countries}: Number of participating countries [20 of 192; 80 of 192; 160 of 192]
-		\item
-		\texttt{sanctions}: Sanctions for missing emission reduction targets [None, 5\%, 15\%, and 20\% of the monthly household costs given 2\% GDP growth]
+	
+	\newpage
+	
+	\begin{enumerate}
+		\item \textbf{Additive Logistic Regression Model}
+		\begin{enumerate}
+			\item Fit the additive model, provide summary output, global null hypothesis, and $p$-values.
+			
+			\lstinputlisting[language=R, firstline=40, lastline=48]{PS02.R}
+			
+			\textit{
+				The number of countries is a strong predictor of policy support. The Chi-square test indicates a significant effect (p $<$ 0.001), so we reject the null hypothesis that the number of countries has no effect.  
+				The level of sanctions is also significant (Chi-square = 68.426, p $<$ 0.001), indicating that sanctions affect policy support. The null hypothesis that sanctions have no effect is rejected.}
+			\begin{verbatim}
+				Df Deviance Resid. Df Resid. Dev  Pr(>Chi)
+				NULL                       8499      11783
+				countries  2  146.724      8497      11637 < 2.2e-16 ***
+				sanctions  3   68.426      8494      11568 9.272e-15 ***
+				
+				Coefficients:
+				Estimate Std. Error z value Pr(>|z|)
+				(Intercept)  0.07545   0.02537  2.975   0.00293 **
+				countries.L  0.45325   0.04373 10.364  < 2e-16 ***
+				countries.Q -0.05758   0.04419 -1.303   0.19258
+				sanctions.L -0.13745   0.04396 -3.126   0.00177 **
+				sanctions.Q  0.18790   0.04395  4.275 1.91e-05 ***
+			\end{verbatim}
+		\end{enumerate}
 		
-	\end{itemize}
-	
-\end{itemize}
-
-\newpage
-\noindent Please answer the following questions:
-
-\begin{enumerate}
-	\item
-	Remember, we are interested in predicting the likelihood of an individual supporting a policy based on the number of countries participating and the possible sanctions for non-compliance.
-	\begin{enumerate}
-		\item [] Fit an additive model. Provide the summary output, the global null hypothesis, and $p$-value. Please describe the results and provide a conclusion.
-
+		\item \textbf{Interpretation of Significant Variables}
+		
+		\begin{enumerate}
+			\item For 160 countries, how does increasing sanctions from 5\% to 15\% affect odds of support?
+			
+			\lstinputlisting[language=R, firstline=60, lastline=76]{PS02.R}
+			
+			\textit{
+				Increasing sanctions from 5\% to 15\% reduces the odds of supporting the policy by about 28\%, holding the number of countries constant. This matches the model output and shows the negative effect of higher sanctions.}
+			
+			\item For 20 countries, how does increasing sanctions from 5\% to 15\% affect odds of support?
+			
+			\lstinputlisting[language=R, firstline=80, lastline=96]{PS02.R}
+			
+			\textit{
+				For 20 participating countries, increasing sanctions from 5\% to 15\% also reduces the odds of supporting the policy by about 28\%, holding the number of countries constant. The effect is similar because the interaction is not significant.}
+			
+			\item Estimated probability of support if 80 countries participate with no sanctions?
+			
+			\lstinputlisting[language=R, firstline=99, lastline=104]{PS02.R}
+			
+			\textit{
+				Given 80 countries participate and no sanctions, the predicted probability of support is approximately 52.5\%.}
+		\end{enumerate}
+		
+		\item \textbf{Interaction Term Between Countries and Sanctions}
+		
+		\begin{itemize}
+			\item Test whether including an interaction term is appropriate.
+			
+			\lstinputlisting[language=R, firstline=107, lastline=111]{PS02.R}
+			
+			\textit{
+				The likelihood ratio test shows that the interaction between countries and sanctions is not significant (p = 0.786). This indicates that the effect of sanctions on policy support is roughly the same at all levels of country participation. Including the interaction does not improve the model, so the answers to 2a and 2b remain unchanged.}
+			
+			\begin{verbatim}
+				Model 1: choice ~ countries + sanctions
+				Model 2: choice ~ countries * sanctions
+				Resid. Df Resid. Dev Df Deviance Pr(>Chi)
+				1      6358     8674.9                     
+				2      6354     8673.2  4   1.7263   0.7859
+			\end{verbatim}
+		\end{itemize}
+		
 	\end{enumerate}
-	
-	\item
-	If any of the explanatory variables are statistically significant in this model, then:
-	\begin{enumerate}
-		\item
-		For the policy in which nearly all countries participate [160 of 192], how does increasing sanctions from 5\% to 15\% change the odds that an individual will support the policy? (Interpretation of a coefficient)
-		\item
-		For the policy in which very few countries participate [20 of 192], how does increasing sanctions from 5\% to 15\% change the odds that an individual will support the policy? (Interpretation of a coefficient)
-		\item
-		What is the estimated probability that an individual will support a policy if there are 80 of 192 countries participating with no sanctions? 
-	
-	\end{enumerate}
-	\item
-	Would the answers to 2a and 2b potentially change if we included an interaction term in this model? Why? 
-	\begin{itemize}
-		\item Perform a test to see if including an interaction is appropriate.
-	\end{itemize}
-	\end{enumerate}
-
-
 \end{document}
+
