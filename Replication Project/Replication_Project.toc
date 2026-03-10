@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Original Study}{2}{section.1}%
+\contentsline {section}{\numberline {2}Methods}{2}{section.2}%
+\contentsline {section}{\numberline {3}Data}{2}{section.3}%
+\contentsline {section}{\numberline {4}Original Model}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Figure 1: Estimated Effects on Vaccination Probability}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Figure 2: Estimated Effects on Vaccination Probability}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Figure 3: Heterogeneous Treatment Effects of Vaccination Incentives}{7}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Modifications to Study}{10}{section.5}%
