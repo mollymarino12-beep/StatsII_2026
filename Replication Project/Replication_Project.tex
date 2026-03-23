@@ -7,6 +7,8 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage[section]{placeins} % prevents floats crossing sections
+\usepackage{afterpage}        % better control for large figures
 
 \geometry{margin=1in}
 
@@ -15,7 +17,8 @@
 	basicstyle=\ttfamily\small,
 	frame=single,
 	breaklines=true,
-	framesep=6pt
+	framesep=6pt,
+	float=htbp % allow listings to float like figures
 }
 
 \title{Incentives and COVID-19 Vaccinations Replication Project}
@@ -31,175 +34,97 @@
 	
 	\section{Original Study}
 	
-	The paper ``Incentives Can Spur COVID-19 Vaccination Uptake'' by Heike Klüver, 
-	Felix Hartmann, Macartan Humphreys, Ferdinand Geissler, and Johannes Giesecke 
-	examines whether policy incentives can increase individuals' willingness to 
-	receive a COVID-19 vaccine.
+	The paper ``Incentives Can Spur COVID-19 Vaccination Uptake'' by Heike Klüver, Felix Hartmann, Macartan Humphreys, Ferdinand Geissler, and Johannes Giesecke investigates whether policy incentives can increase people’s willingness to receive a COVID-19 vaccine. The study was conducted during the pandemic to address vaccine hesitancy, which threatened efforts to reach high vaccination coverage and control the spread of COVID-19.
 	
-	Written during the COVID-19 pandemic, the study addresses the problem of vaccine 
-	hesitancy, which threatened efforts to achieve high vaccination coverage and 
-	control the spread of the virus.
+	The researchers conducted a factorial survey experiment with 20,500 participants in Germany between March 5 and March 25, 2021. Participants were shown hypothetical scenarios in which policies varied across three dimensions: financial incentives, freedoms for vaccinated individuals, and access to vaccination through local doctors. Financial incentives were either 25 euros or 50 euros. Freedoms referred to liberties that vaccinated participants could enjoy that unvaccinated participants could not. Access through local doctors aimed to reduce barriers and increase trust.
 	
-	The authors conducted a large survey experiment with approximately 20,500 
-	participants in Germany. Respondents were presented with different vaccination 
-	policy scenarios that varied across policy attributes such as financial 
-	incentives, expanded freedoms for vaccinated individuals, and easier access to 
-	vaccines through local doctors.
+	The study found that all three policy strategies increased willingness to vaccinate. For the full sample, a financial incentive of 25 euros increased willingness by one percentage point, while 50 euros increased it by 2.2 percentage points. Freedoms for vaccinated participants increased willingness by 2.5 percentage points, and vaccination at local doctors increased it by three percentage points. Among participants who were undecided, effects were stronger: financial incentives increased willingness by five percentage points, freedoms increased willingness by six percentage points, and local doctor access increased willingness by five percentage points. When all three incentives were combined, acceptance among undecided participants increased by thirteen percentage points.
 	
-	The results suggest that each of these policies can modestly increase willingness 
-	to vaccinate, particularly among individuals who are undecided rather than 
-	strongly opposed. The authors conclude that combining multiple incentives and 
-	improving vaccine access may be an effective strategy for policymakers seeking 
-	to increase vaccination rates.
+	The study also found that older participants were more responsive to local doctor access, while younger participants were more responsive to freedoms. This indicates that demographic factors, particularly age, shape how incentives influence vaccination willingness.
 	
 	\section{Methods}
 	
-	The study analyzes data from a large survey experiment using regression analysis 
-	to evaluate how policy incentives influence individuals' willingness to receive 
-	a COVID-19 vaccine.
-	
-	Participants were asked to evaluate hypothetical vaccination scenarios that 
-	differed across several policy characteristics, including financial incentives, 
-	access to vaccination through local physicians, and expanded freedoms for 
-	vaccinated individuals.
-	
-	The dependent variable measures each respondent's stated likelihood of choosing 
-	vaccination under the given scenario. Linear regression models estimate the 
-	relationship between vaccination willingness and the randomly assigned policy 
-	attributes, allowing the marginal effect of each incentive to be identified.
+	The study used linear regression models to estimate the effect of each policy on the likelihood of vaccination. Individual fixed effects controlled for unobserved participant characteristics that did not change over time. Participants rated their willingness to vaccinate on a scale from zero to one for each scenario. To explore heterogeneity in responses, a machine learning method called causal forests was used, examining factors such as age, trust, risk preferences, and prior vaccine hesitancy.
 	
 	\section{Data}
 	
-	The analysis was conducted in R using R Markdown. The workflow was organized 
-	across three scripts:
-	
-	\begin{itemize}
-		\item prep data: prepares and cleans the dataset used in the analysis
-		\item main results: estimates baseline regression models and produces the main results tables
-		\item het effects: estimates heterogeneous treatment effects for different subgroups
-	\end{itemize}
-	
-	All scripts are compiled through a master document called \texttt{index.Rmd} 
+	The replication uses the original dataset analyzed in R, organized in three scripts. The first script, \texttt{prep\_data.R}, prepares and cleans the dataset. The second script, \texttt{main\_results.R}, estimates baseline regression models. The third script, \texttt{het\_effects.R}, examines heterogeneous treatment effects across subgroups. These scripts are compiled through the master document \texttt{index.Rmd}.
 	
 	\lstinputlisting[language=R, firstline=3, lastline=3]{Replication_Project.R}
 	
-	This procedure executes each script sequentially and reproduces the full 
-	analysis pipeline.
-	
 	\section{Original Model}
 	
-	Figures 1, 2, and 3 are based on regression and machine learning models 
-	estimating the effects of vaccination incentives.
-	
-	The analysis first estimates first-difference regressions where the change in 
-	vaccination willingness between two scenarios is regressed on changes in assigned 
-	treatments: negative incentives, financial incentives of 25 or 50 euros, and 
-	improved access through local doctors.
-	
-	Equivalent individual fixed-effects regressions are also estimated using a 
-	stacked dataset with individual indicators to control for unobserved 
-	time-invariant characteristics.
+	The analysis estimates the change in willingness to vaccinate between different hypothetical scenarios as a function of treatment. Treatments include financial incentives of 25 euros and 50 euros, freedoms for vaccinated participants, and vaccination at local doctors. Individual fixed-effects regressions are estimated using a stacked dataset with indicators for each participant to control for unobserved characteristics.
 	
 	\lstinputlisting[language=R, firstline=5, lastline=84]{Replication_Project.R}
 	
 	\subsection{Figure 1: Estimated Effects on Vaccination Probability}
 	
-	\begin{figure}[H]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figure_1a.pdf}
-		\caption{Estimated effects on vaccination probability}
+		\caption{Estimated effect of each incentive on the probability that a participant would take a COVID-19 vaccine. For the overall sample, financial incentives of 25 euros increased willingness by one percentage point, and 50 euros increased it by 2.2 percentage points. Freedoms increased willingness by 2.5 percentage points, and vaccination through local doctors increased willingness by three percentage points. Among undecided participants, financial incentives increased willingness by five percentage points, freedoms by six percentage points, and local doctor access by five percentage points. This figure shows that undecided participants respond most strongly, while those already refusing vaccination show little change.}
 	\end{figure}
-	
-	Figure 1 shows the estimated treatment effects of different incentives on the 
-	probability of vaccination. Financial incentives increase vaccination intentions 
-	by roughly three to five percentage points, with the €50 incentive producing a 
-	slightly larger effect than the €25 incentive.
-	
-	Freedom-related incentives increase vaccination probability by roughly two to 
-	three percentage points, while access through local doctors produces the largest 
-	estimated effect, around five to six percentage points.
-	
-	The treatment effects are heterogeneous across groups. Individuals who are 
-	undecided respond most strongly to incentives, while those already refusing 
-	vaccination show little change.
+	\FloatBarrier
 	
 	\lstinputlisting[language=R, firstline=86, lastline=97]{Replication_Project.R}
 	
 	\subsection{Figure 2: Predicted Share of Population Vaccinated}
 	
-	\begin{figure}[H]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{figure_1b.pdf}
-		\caption{Predicted share of the population vaccinated under different incentive scenarios}
+		\caption{Predicted share of the population that would be vaccinated under different incentive scenarios. In the baseline scenario with no incentives, about 67 percent of participants are predicted to be vaccinated. Introducing freedoms and vaccination at local doctors raises this share to about 73 percent. When all three incentives, including the 50-euro financial incentive, are combined, the vaccinated share rises to approximately 80 percent. These gains are largely due to undecided participants deciding to vaccinate, rather than participants who would refuse vaccination.}
 	\end{figure}
+	\FloatBarrier
 	
-	Figure 2 presents simulated vaccination outcomes under alternative policy 
-	scenarios. In the baseline scenario with no incentives, approximately 50--55\% 
-	of the population is vaccinated.
+	\lstinputlisting[language=R, firstline=99, lastline=123]{Replication_Project.R}
 	
-	Introducing local doctor messaging together with freedom incentives increases 
-	the vaccinated share to roughly 60--65\%. When all incentives are implemented 
-	simultaneously, the predicted vaccination rate rises further to approximately 
-	70--75\% of the population.
+	\subsection{Figure 3: Heterogeneous Treatment Effects}
 	
-	These increases occur primarily through a reduction in the number of undecided 
-	individuals rather than large shifts among those strongly refusing vaccination.
-	
-	\lstinputlisting[language=R, firstline=99, lastline=107]{Replication_Project.R}
-	
-	\subsection{Figure 3: Heterogeneous Treatment Effects of Vaccination Incentives}
-	
-	\begin{figure}[H]
+	\begin{figure}[p] % full-page figure for large content
 		\centering
 		\includegraphics[width=\textwidth]{fig_2_ABC.pdf}
-		\caption{Estimated heterogeneous treatment effects of vaccination incentives across individual characteristics}
+		\caption{Heterogeneous treatment effects using a causal forest model. Older participants respond more to the opportunity to be vaccinated at local doctors, while younger participants respond more to freedoms. The figure illustrates how demographic and attitudinal factors influence the effectiveness of incentives.}
 	\end{figure}
-	
-	Figure 3 presents heterogeneous treatment effects of vaccination incentives 
-	estimated using a causal forest model. The analysis identifies which covariates 
-	are most predictive of variation in treatment effects, including age, prior 
-	vaccine hesitancy, socio-economic indicators, and attitudinal measures such as 
-	trust in media and risk preferences.
-	
-	Predicted conditional average treatment effects vary across individuals and 
-	demographic characteristics, demonstrating that the impact of policy incentives 
-	differs across population groups.
+	\FloatBarrier
 	
 	\lstinputlisting[language=R, firstline=109, lastline=125]{Replication_Project.R}
 	
-	\section{Modifications to the Study}
+	\section{Modifications}
 	
-	To explore heterogeneity in treatment effects, the original regression model was 
-	modified to include interaction terms between each treatment variable and 
-	normalized age (\texttt{age2}). The original model assumed additive effects, 
-	meaning that each incentive had the same effect for all respondents.
+	The original study examined the average effects of financial incentives, freedoms, and vaccination access, but it did not consider participants’ baseline willingness to vaccinate. This modification explores how baseline willingness interacts with other factors, particularly trust in government. The results show that trust has a stronger and more meaningful effect on increasing vaccination willingness than financial incentives, especially among hesitant individuals, highlighting the importance of accounting for heterogeneity in responses.
 	
-	The modified specification allows treatment effects to vary with age:
+	The first model examined baseline willingness and trust in government. The regression shows that, holding baseline willingness constant, a one standard deviation increase in trust in government is associated with a 0.0187 increase in the change in willingness to vaccinate (Estimate = 0.0187, p < 2e-16). This demonstrates that individuals with higher trust in government are more likely to increase their willingness to vaccinate. Additionally, the interaction term between baseline willingness and trust in government is negative and significant (Estimate = -0.0064, p = 2.43e-08). This means that for every one standard deviation increase in baseline hesitancy, the positive effect of trust in government on increasing willingness is slightly reduced by 0.0064.
 	
-	\[
-	outcome\_diff \sim treatment + treatment \times age2
-	\]
-	
-	The interaction term captures how the marginal effect of each treatment changes 
-	as age increases.
-	
-	\subsection{Interaction Effects with Age}
-	
-	\begin{figure}[H]
+		\begin{figure}[!htbp]
 		\centering
-		\includegraphics[width=0.8\textwidth]{Figure_Interaction_Age.pdf}
-		\caption{Estimated treatment effects including interactions with age}
+		\includegraphics[width=0.8\textwidth]{mod1_table.pdf}
+		\caption{Regression Results: Baseline Willingness × Trust in Government}
+		\label{fig:mod1}
 	\end{figure}
+	\FloatBarrier
 	
-	The results indicate that the effectiveness of incentives differs across age 
-	groups. For example, the predicted effect of the freedoms incentive is roughly 
-	0.02 for younger respondents but increases to approximately 0.08 for older 
-	respondents.
+	In other words, trust in government especially helps individuals with initially low willingness to move toward vaccination. The intercept and baseline effects show that each one standard deviation increase in baseline willingness decreases the change in willingness by 0.0465 (Estimate = -0.0465, p < 2e-16), consistent with the idea that those who are already willing have less room to increase. This analysis highlights a significant effect not included in the original study, which did not examine trust as a moderator of baseline willingness.
 	
-	Financial incentives show similar patterns, while the local doctor incentive 
-	exhibits relatively little variation across age groups. These findings suggest 
-	that vaccination incentives do not affect all individuals equally and that 
-	demographic characteristics such as age play an important role in shaping 
-	responses to policy interventions.
+	The second model investigated baseline willingness and Financial Incentive B to provide a comparison to the effect of trust in government. Holding baseline willingness constant, a one standard deviation increase in Financial Incentive B is associated with a 0.0111 increase in change in willingness (Estimate = 0.0111, p < 2e-16). The interaction term with baseline willingness is marginally significant (Estimate = -0.0021, p = 0.051), indicating that for every one standard deviation increase in baseline willingness, the effect of the incentive slightly decreases. The main effect of baseline willingness remains negative and highly significant (Estimate = -0.0358, p < 2e-16), showing that individuals who are already willing have less room to increase. Overall, while Financial Incentive B positively influences willingness, its effect is smaller and less robust than that of trust in government, highlighting that trust is more important than financial incentives in shaping changes in vaccination willingness.
+	
+		\begin{figure}[!htbp]
+		\centering
+		\includegraphics[width=0.8\textwidth]{mod2_table.pdf}
+		\caption{Regression Results: Baseline Willingness × Financial Incentive B}
+		\label{fig:mod2}
+	\end{figure}
+	\FloatBarrier
+	
+	Policy Implications: Translating the coefficients into practical terms, these results suggest that trust in government has a stronger and more meaningful impact than financial incentives, particularly among initially hesitant individuals. For example, increasing trust in government by one standard deviation increases willingness by roughly 0.0187 units, whereas a comparable increase in financial incentives only raises willingness by 0.0111 units. Public health campaigns should therefore prioritize building and maintaining trust through transparent communication, engagement with trusted authorities, and responsiveness to public concerns. Financial incentives can complement these efforts but are less effective at motivating hesitant populations.
+	
+	In summary, the statistical findings show that trust in government is both statistically significant and practically meaningful, while financial incentives have a positive but smaller effect. This highlights the importance of considering institutional trust in policy design for vaccination campaigns.
+	
+	\lstinputlisting[language=R, firstline=127, lastline=147]{Replication_Project.R}
+	
+	\lstinputlisting[language=R, firstline=149, lastline=169]{Replication_Project.R}
+	
+
 	
 \end{document}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.21)  16 MAR 2026 13:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.21)  19 MAR 2026 16:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,6 +307,15 @@ File: lstmisc.sty 2024/09/23 1.10c (Carsten Heinz)
 File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
+(C:\Users\molly\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+(C:\Users\molly\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks27
+\AP@partial=\box59
+\AP@footins=\box60
+)
 (C:\Users\molly\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
@@ -323,39 +332,39 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 ) (Replication_Project.aux)
 \openout1 = `Replication_Project.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 (C:\Users\molly\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count320
 \scratchdimen=\dimen176
-\scratchbox=\box59
+\scratchbox=\box61
 \nofMPsegments=\count321
 \nofMParguments=\count322
-\everyMPshowfont=\toks27
+\everyMPshowfont=\toks28
 \MPscratchCnt=\count323
 \MPscratchDim=\dimen177
 \MPnumerator=\count324
 \makeMPintoPDFobject=\count325
-\everyMPtoPDFconversion=\toks28
+\everyMPtoPDFconversion=\toks29
 )
 (C:\Users\molly\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
@@ -401,7 +410,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 25.
+Package hyperref Info: Link coloring OFF on input line 28.
 (Replication_Project.out) (Replication_Project.out)
 \@outlinefile=\write3
 \openout3 = `Replication_Project.out'.
@@ -417,7 +426,7 @@ Package hyperref Info: Link coloring OFF on input line 25.
 
 {C:/Users/molly/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 84.
+nput line 53.
 
 (Replication_Project.R)
 
@@ -435,42 +444,54 @@ LaTeX Font Warning: Font shape `TS1/cmtt/bx/n' undefined
 [3]
 
 [4])
-<figure_1a.pdf, id=151, 433.62pt x 361.35pt>
+<figure_1a.pdf, id=142, 433.62pt x 361.35pt>
 File: figure_1a.pdf Graphic file (type pdf)
 <use figure_1a.pdf>
-Package pdftex.def Info: figure_1a.pdf  used on input line 109.
+Package pdftex.def Info: figure_1a.pdf  used on input line 65.
 (pdftex.def)             Requested size: 375.80544pt x 313.18651pt.
  (Replication_Project.R
 
 [5 <./figure_1a.pdf>])
-<figure_1b.pdf, id=167, 433.62pt x 361.35pt>
+<figure_1b.pdf, id=161, 433.62pt x 361.35pt>
 File: figure_1b.pdf Graphic file (type pdf)
 <use figure_1b.pdf>
-Package pdftex.def Info: figure_1b.pdf  used on input line 132.
+Package pdftex.def Info: figure_1b.pdf  used on input line 76.
 (pdftex.def)             Requested size: 375.80544pt x 313.18651pt.
 
 
-[6 <./figure_1b.pdf>] (Replication_Project.R)
-<fig_2_ABC.pdf, id=194, 650.43pt x 650.43pt>
+[6]
+
+[7 <./figure_1b.pdf>] (Replication_Project.R)
+<fig_2_ABC.pdf, id=193, 650.43pt x 650.43pt>
 File: fig_2_ABC.pdf Graphic file (type pdf)
 <use fig_2_ABC.pdf>
-Package pdftex.def Info: fig_2_ABC.pdf  used on input line 154.
+Package pdftex.def Info: fig_2_ABC.pdf  used on input line 87.
 (pdftex.def)             Requested size: 469.75502pt x 469.76817pt.
 
 
-[7]
+[8]
 
-[8 <./fig_2_ABC.pdf>] (Replication_Project.R)
-<Figure_Interaction_Age.pdf, id=224, 578.16pt x 433.62pt>
-File: Figure_Interaction_Age.pdf Graphic file (type pdf)
-<use Figure_Interaction_Age.pdf>
-Package pdftex.def Info: Figure_Interaction_Age.pdf  used on input line 190.
-(pdftex.def)             Requested size: 375.80544pt x 281.84966pt.
+[9 <./fig_2_ABC.pdf>] (Replication_Project.R)
+<mod1_table.pdf, id=239, 578.16pt x 289.08pt>
+File: mod1_table.pdf Graphic file (type pdf)
+<use mod1_table.pdf>
+Package pdftex.def Info: mod1_table.pdf  used on input line 102.
+(pdftex.def)             Requested size: 375.80544pt x 187.89977pt.
 
 
-[9]
+[10]
+<mod2_table.pdf, id=262, 578.16pt x 289.08pt>
+File: mod2_table.pdf Graphic file (type pdf)
+<use mod2_table.pdf>
+Package pdftex.def Info: mod2_table.pdf  used on input line 114.
+(pdftex.def)             Requested size: 375.80544pt x 187.89977pt.
 
-[10 <./Figure_Interaction_Age.pdf>] (Replication_Project.aux)
+
+[11 <./mod1_table.pdf>] (Replication_Project.R
+
+[12 <./mod2_table.pdf>]) (Replication_Project.R)
+
+[13] (Replication_Project.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-08-13>
@@ -480,29 +501,28 @@ L3 programming layer <2025-08-13>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `Replication_Project.out' has not changed.
-(rerunfilecheck)             Checksum: 9C92346ED0E1D15FBF6127EA629CE19B;1844.
+(rerunfilecheck)             Checksum: 5807ACFA5784C9027EED053795B2E1DC;1425.
  ) 
 Here is how much of TeX's memory you used:
- 12346 strings out of 468133
- 185215 string characters out of 5430712
- 1127531 words of memory out of 5000000
- 40681 multiletter control sequences out of 15000+600000
- 634390 words of font info for 67 fonts, out of 8000000 for 9000
+ 12499 strings out of 468133
+ 188016 string characters out of 5430712
+ 1140837 words of memory out of 5000000
+ 40758 multiletter control sequences out of 15000+600000
+ 634558 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,474b,2104s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
-1095.pk> <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\tcrm1200.pk><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/
+ 75i,6n,79p,1064b,2111s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1200.pk> <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
+0\tctt1095.pk><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx12.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/molly/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/molly/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/molly/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/mol
-ly/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Replication_Project.pdf (10 pages, 187452 bytes).
+1/public/amsfonts/cm/cmitt10.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/molly/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/molly/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/molly/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on Replication_Project.pdf (13 pages, 192626 bytes).
 PDF statistics:
- 331 PDF objects out of 1000 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 416 PDF objects out of 1000 (max. 8388607)
+ 212 named destinations out of 1000 (max. 500000)
+ 90 words of extra memory for PDF output out of 10000 (max. 10000000)
 

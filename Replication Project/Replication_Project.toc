@@ -4,6 +4,5 @@
 \contentsline {section}{\numberline {4}Original Model}{3}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Figure 1: Estimated Effects on Vaccination Probability}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Figure 2: Predicted Share of Population Vaccinated}{6}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Figure 3: Heterogeneous Treatment Effects of Vaccination Incentives}{8}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Modifications to the Study}{9}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Interaction Effects with Age}{10}{subsection.5.1}%
+\contentsline {subsection}{\numberline {4.3}Figure 3: Heterogeneous Treatment Effects}{8}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Modifications}{10}{section.5}%

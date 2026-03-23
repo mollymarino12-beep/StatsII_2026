@@ -123,41 +123,48 @@ fig_2_ABC <- ggarrange(
 )
 
 fig_2_ABC
-# Modifications
-model_interact <- lm_robust(
-  outcome_diff ~
-    negative_diff * age2 +
-    financialA_diff * age2 +
-    financialB_diff * age2 +
-    transaction_diff * age2,
-  data = df,
-  se_type = "stata"
-)
-
-library(broom)
-
-plot_data <- tidy(model_interact) %>%
-  dplyr::filter(grepl("diff", term)) %>%
+# Modification 1 Trust in Gov X Baseline Willingness
+library(dplyr)
+library(ggplot2)
+library(ggeffects)
+df_clean <- df %>%
+  filter(!is.na(outcome_diff), !is.na(outcome_t1), !is.na(trust.government)) %>%
   mutate(
-    Treatment = case_when(
-      grepl("negative_diff", term) ~ "Freedoms",
-      grepl("financialA_diff", term) ~ "25 Euro",
-      grepl("financialB_diff", term) ~ "50 Euro",
-      grepl("transaction_diff", term) ~ "Local Doctor",
-      TRUE ~ term
-    ),
-    EffectType = ifelse(grepl(":age2", term), "Interaction with Age", "Main Effect")
+    baseline_std = as.numeric(scale(outcome_t1)),      # baseline willingness
+    trust_gov_std = as.numeric(scale(trust.government))
   )
+model_trust_gov <- lm(outcome_diff ~ baseline_std * trust_gov_std, data = df_clean)
+summary(model_trust_gov)
+coef_table <- data.frame(
+  Term = c("(Intercept)", "baseline_std", "trust_gov_std", "baseline_std:trust_gov_std"),
+  Estimate = c(-0.001472356, -0.046454343, 0.018720479, -0.006411467),
+  Std.Error = c(0.001197223, 0.001313731, 0.001207654, 0.001148893),
+  t.value = c(-1.229809, -35.360624, 15.501526, -5.580561),
+  p.value = c(2.187827e-01, 6.465177e-266, 6.853514e-54, 2.427762e-08)
+)
+pdf("mod1_table.pdf", width = 8, height = 4)
+grid.table(coef_table)
+dev.off()
+#Compare to Financial Incentive B X Baseline Willingness
+library(dplyr)
+library(gridExtra)
+library(grid)
+df_clean <- df %>%
+  filter(!is.na(outcome_diff), !is.na(outcome_t1), !is.na(financialB_diff)) %>%
+  mutate(
+    baseline_std = as.numeric(scale(outcome_t1)),
+    financialB_std = as.numeric(scale(financialB_diff))
+  )
+model_finB <- lm(outcome_diff ~ baseline_std * financialB_std, data = df_clean)
+summary(model_finB)
+coef_table_finB <- data.frame(
+  Term = c("(Intercept)", "baseline_std", "financialB_std", "baseline_std:financialB_std"),
+  Estimate = c(-0.004132, -0.035815, 0.011145, -0.002145),
+  Std.Error = c(0.001105, 0.001105, 0.001105, 0.001098),
+  t.value = c(-3.739, -32.413, 10.087, -1.954),
+  p.value = c(0.000185, 0, 0, 0.050705)
+)
+pdf("mod2_table.pdf", width = 8, height = 4)
+grid.table(coef_table_finB)
+dev.off()
 
-p <- ggplot(plot_data, aes(x = Treatment, y = estimate, fill = EffectType)) +
-  geom_col(position = "dodge") +
-  geom_errorbar(
-    aes(ymin = conf.low, ymax = conf.high),
-    position = position_dodge(width = 0.9),
-    width = 0.25
-  ) +
-  theme_bw(base_size = 14) +
-  ylab("Estimated Effect on Vaccination Probability") +
-  xlab("Treatment") +
-  scale_fill_manual(values = c("Main Effect" = "#1f78b4", "Interaction with Age" = "#33a02c")) +
-  ggtitle("Estimated Treatment Effects with Age Interactions")
