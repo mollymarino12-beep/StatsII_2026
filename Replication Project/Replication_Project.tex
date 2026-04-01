@@ -38,7 +38,7 @@
 	
 	The researchers conducted a factorial survey experiment with 20,500 participants in Germany between March 5 and March 25, 2021. Participants were shown hypothetical scenarios in which policies varied across three dimensions: financial incentives, freedoms for vaccinated individuals, and access to vaccination through local doctors. Financial incentives were either 25 euros or 50 euros. Freedoms referred to liberties that vaccinated participants could enjoy that unvaccinated participants could not. Access through local doctors aimed to reduce barriers and increase trust.
 	
-	The study found that all three policy strategies increased willingness to vaccinate. For the full sample, a financial incentive of 25 euros increased willingness by one percentage point, while 50 euros increased it by 2.2 percentage points. Freedoms for vaccinated participants increased willingness by 2.5 percentage points, and vaccination at local doctors increased it by three percentage points. Among participants who were undecided, effects were stronger: financial incentives increased willingness by five percentage points, freedoms increased willingness by six percentage points, and local doctor access increased willingness by five percentage points. When all three incentives were combined, acceptance among undecided participants increased by thirteen percentage points.
+	The study found that all three policy strategies increased willingness to vaccinate. For the full sample, a financial incentive of 25 euros increased willingness by one percentage point, while 50 euros increased it by 2.2 percentage points. Freedoms for vaccinated participants increased willingness by 2.5 percentage points, and vaccination at local doctors increased willingness by three percentage points. Among participants who were undecided, effects were stronger: financial incentives increased willingness by five percentage points, freedoms increased willingness by six percentage points, and local doctor access increased willingness by five percentage points. When all three incentives were combined, acceptance among undecided participants increased by thirteen percentage points.
 	
 	The study also found that older participants were more responsive to local doctor access, while younger participants were more responsive to freedoms. This indicates that demographic factors, particularly age, shape how incentives influence vaccination willingness.
 	
@@ -82,7 +82,7 @@
 	
 	\subsection{Figure 3: Heterogeneous Treatment Effects}
 	
-	\begin{figure}[p] % full-page figure for large content
+	\begin{figure}[p]
 		\centering
 		\includegraphics[width=\textwidth]{fig_2_ABC.pdf}
 		\caption{Heterogeneous treatment effects using a causal forest model. Older participants respond more to the opportunity to be vaccinated at local doctors, while younger participants respond more to freedoms. The figure illustrates how demographic and attitudinal factors influence the effectiveness of incentives.}
@@ -95,9 +95,9 @@
 	
 	The original study examined the average effects of financial incentives, freedoms, and vaccination access, but it did not consider participants’ baseline willingness to vaccinate. This modification explores how baseline willingness interacts with other factors, particularly trust in government. The results show that trust has a stronger and more meaningful effect on increasing vaccination willingness than financial incentives, especially among hesitant individuals, highlighting the importance of accounting for heterogeneity in responses.
 	
-	The first model examined baseline willingness and trust in government. The regression shows that, holding baseline willingness constant, a one standard deviation increase in trust in government is associated with a 0.0187 increase in the change in willingness to vaccinate (Estimate = 0.0187, p < 2e-16). This demonstrates that individuals with higher trust in government are more likely to increase their willingness to vaccinate. Additionally, the interaction term between baseline willingness and trust in government is negative and significant (Estimate = -0.0064, p = 2.43e-08). This means that for every one standard deviation increase in baseline hesitancy, the positive effect of trust in government on increasing willingness is slightly reduced by 0.0064.
+	The first model examined baseline willingness and trust in government. The regression shows that, holding baseline willingness constant, a one standard deviation increase in trust in government is associated with a 0.0187 increase in the change in willingness to vaccinate (Estimate $= 0.0187$, $p < 2 \times 10^{-16}$). This demonstrates that individuals with higher trust in government are more likely to increase their willingness to vaccinate. Additionally, the interaction term between baseline willingness and trust in government is negative and significant (Estimate $= -0.0064$, $p = 2.43 \times 10^{-8}$). This means that for every one standard deviation increase in baseline hesitancy, the positive effect of trust in government on increasing willingness is slightly reduced by 0.0064.
 	
-		\begin{figure}[!htbp]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{mod1_table.pdf}
 		\caption{Regression Results: Baseline Willingness × Trust in Government}
@@ -105,11 +105,11 @@
 	\end{figure}
 	\FloatBarrier
 	
-	In other words, trust in government especially helps individuals with initially low willingness to move toward vaccination. The intercept and baseline effects show that each one standard deviation increase in baseline willingness decreases the change in willingness by 0.0465 (Estimate = -0.0465, p < 2e-16), consistent with the idea that those who are already willing have less room to increase. This analysis highlights a significant effect not included in the original study, which did not examine trust as a moderator of baseline willingness.
+	In other words, trust in government especially helps individuals with initially low willingness to move toward vaccination. The intercept and baseline effects show that each one standard deviation increase in baseline willingness decreases the change in willingness by 0.0465 (Estimate $= -0.0465$, $p < 2 \times 10^{-16}$), consistent with the idea that those who are already willing have less room to increase. This analysis highlights a significant effect not included in the original study, which did not examine trust as a moderator of baseline willingness.
 	
-	The second model investigated baseline willingness and Financial Incentive B to provide a comparison to the effect of trust in government. Holding baseline willingness constant, a one standard deviation increase in Financial Incentive B is associated with a 0.0111 increase in change in willingness (Estimate = 0.0111, p < 2e-16). The interaction term with baseline willingness is marginally significant (Estimate = -0.0021, p = 0.051), indicating that for every one standard deviation increase in baseline willingness, the effect of the incentive slightly decreases. The main effect of baseline willingness remains negative and highly significant (Estimate = -0.0358, p < 2e-16), showing that individuals who are already willing have less room to increase. Overall, while Financial Incentive B positively influences willingness, its effect is smaller and less robust than that of trust in government, highlighting that trust is more important than financial incentives in shaping changes in vaccination willingness.
+	The second model investigated baseline willingness and Financial Incentive B to provide a comparison to the effect of trust in government. Holding baseline willingness constant, a one standard deviation increase in Financial Incentive B is associated with a 0.0111 increase in change in willingness (Estimate $= 0.0111$, $p < 2 \times 10^{-16}$). The interaction term with baseline willingness is marginally significant (Estimate $= -0.0021$, $p = 0.051$), indicating that for every one standard deviation increase in baseline willingness, the effect of the incentive slightly decreases. The main effect of baseline willingness remains negative and highly significant (Estimate $= -0.0358$, $p < 2 \times 10^{-16}$), showing that individuals who are already willing have less room to increase. Overall, while Financial Incentive B positively influences willingness, its effect is smaller and less robust than that of trust in government, highlighting that trust is more important than financial incentives in shaping changes in vaccination willingness.
 	
-		\begin{figure}[!htbp]
+	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=0.8\textwidth]{mod2_table.pdf}
 		\caption{Regression Results: Baseline Willingness × Financial Incentive B}
@@ -125,6 +125,5 @@
 	
 	\lstinputlisting[language=R, firstline=149, lastline=169]{Replication_Project.R}
 	
-
 	
 \end{document}

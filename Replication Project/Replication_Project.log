@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.21)  19 MAR 2026 16:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.21)  1 APR 2026 10:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -480,7 +480,7 @@ Package pdftex.def Info: mod1_table.pdf  used on input line 102.
 
 
 [10]
-<mod2_table.pdf, id=262, 578.16pt x 289.08pt>
+<mod2_table.pdf, id=266, 578.16pt x 289.08pt>
 File: mod2_table.pdf Graphic file (type pdf)
 <use mod2_table.pdf>
 Package pdftex.def Info: mod2_table.pdf  used on input line 114.
@@ -506,23 +506,28 @@ Package rerunfilecheck Info: File `Replication_Project.out' has not changed.
 Here is how much of TeX's memory you used:
  12499 strings out of 468133
  188016 string characters out of 5430712
- 1140837 words of memory out of 5000000
+ 1140843 words of memory out of 5000000
  40758 multiletter control sequences out of 15000+600000
  634558 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,1064b,2111s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,1100b,2111s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
 1200.pk> <C:\Users\molly\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\tctt1095.pk><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx12.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmitt10.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/molly/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/molly/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/molly/AppDa
-ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on Replication_Project.pdf (13 pages, 192626 bytes).
+fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/molly/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/molly/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/molly/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/moll
+y/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmtt10.pfb><C:/Users/molly/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmtt12.pfb>
+Output written on Replication_Project.pdf (13 pages, 227746 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
+ 436 PDF objects out of 1000 (max. 8388607)
  212 named destinations out of 1000 (max. 500000)
  90 words of extra memory for PDF output out of 10000 (max. 10000000)
 
